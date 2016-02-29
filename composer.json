@@ -1,0 +1,21 @@
+{
+    "name": "kaile/yii2-bootstrap-galery",
+    "description": "Yii2 extension bootstrap galery for photos, videos and audio traks",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"," bootstrap"," galery"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mkhail Kornilov",
+            "email": "fix-06@yandex.ru"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "kaile\\BootstrapGalery\\": ""
+        }
+    }
+}
