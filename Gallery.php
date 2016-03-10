@@ -1,30 +1,30 @@
 <?php
 
-namespace kaile\BootstrapGalery;
+namespace kaile\BootstrapGallery;
 
 use Yii;
 use yii\base\Widget;
 use yii\db\ActiveQuery;
 
 /**
- * Description of Galery
+ * Description of Gallery
  *
  * @created 26.02.2016 14:06:15
  * @author Mihail Kornilov <fix-06 at yandex.ru>
  *
  * @since 1.0
  */
-class Galery extends Widget
+class Gallery extends Widget
 {
     /**
-     * Constants that indicate what is the galery is it
+     * Constants that indicate what is the gallery is it
      */
-    const TYPE_PHOTO = 'photo'; // Default galery type if it is not set
+    const TYPE_PHOTO = 'photo'; // Default gallery type if it is not set
     const TYPE_VIDEO = 'video';
     const TYPE_AUDIO = 'audio';
 
     /**
-     * Type of galery widget
+     * Type of gallery widget
      *
      * @var string
      */
@@ -38,21 +38,21 @@ class Galery extends Widget
     public $query = null;
 
     /**
-     * Model attribute that contains data for titles of galery items
+     * Model attribute that contains data for titles of gallery items
      *
      * @var ActiveQuery
      */
     public $titleAttribute = 'title';
 
     /**
-     * Model attribute that contains data for links of galery items
+     * Model attribute that contains data for links of gallery items
      *
      * @var string
      */
     public $linkAttribute = 'link';
 
     /**
-     * Model attribute that contains data for descriptions of galery items
+     * Model attribute that contains data for descriptions of gallery items
      * @var string
      */
     public $descriptionAttribute = 'description';
@@ -65,14 +65,14 @@ class Galery extends Widget
     public $mainViewPath = '';
 
     /**
-     * Main view name of galery
+     * Main view name of gallery
      *
      * @var string
      */
-    public $mainView = 'galery';
+    public $mainView = 'gallery';
 
     /**
-     * Full path for views directory where galery items views are contains. Same as
+     * Full path for views directory where gallery items views are contains. Same as
      * [[$photoView]], [[$videoView]], [[$audioView]]. Default sets to __DIR__ . '/views'.
      *
      * @var string
@@ -80,21 +80,21 @@ class Galery extends Widget
     public $itemsViewPath = '';
 
     /**
-     * View name of photo galery items
+     * View name of photo gallery items
      *
      * @var string
      */
     public $photoView = 'photo';
 
     /**
-     * View name of video galery items
+     * View name of video gallery items
      *
      * @var string
      */
     public $videoView = 'video';
 
     /**
-     * View name of audio galery items
+     * View name of audio gallery items
      *
      * @var string
      */
@@ -117,6 +117,22 @@ class Galery extends Widget
         if (empty($this->itemsViewPath)) {
             $this->itemsViewPath = __DIR__ . DIRECTORY_SEPARATOR . 'views';
         }
+        $this->registerTranslations();
+    }
+
+    /**
+     * Register config that sets translation settings for extension in application
+     */
+    public function registerTranslations()
+    {
+        Yii::$app->i18n->translations['bg*'] = [
+            'class' => 'yii\i18n\PhpMessageSource',
+            'sourceLanguage' => 'ru-RU',
+            'basePath' => '@app/vendor/kaile/yii2-bootstrap-gallery/messages',
+            'fileMap' => [
+                'vendor/kaile/yii2-bootstrap-gallery/bg' => 'bg.php',
+            ],
+        ];
     }
 
     /**
@@ -124,9 +140,9 @@ class Galery extends Widget
      */
     public function run()
     {
-        $models = $this->query->find()->all();
+        $models = $this->query->all();
 
-        echo $this->render(__DIR__ . DIRECTORY_SEPARATOR . $this->view, [
+        echo $this->render($this->mainView, [
             'models' => $models,
             'widget' => $this,
         ]);

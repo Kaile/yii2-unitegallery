@@ -1,5 +1,8 @@
 <?php
-    /* @var $this yii\web\View */
+    use yii\web\View;
+    use kaile\BootstrapGallery\Gallery;
+
+    /* @var $this View */
 ?>
 
 <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
@@ -25,10 +28,10 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left prev">
                         <i class="glyphicon glyphicon-chevron-left"></i>
-                        <?= Yii('bg', 'Предыдущий') ?>
+                        <?= Yii::t('bg', 'Предыдущий') ?>
                     </button>
                     <button type="button" class="btn btn-primary next">
-                        <?= Yii('bg', 'Следующий') ?>
+                        <?= Yii::t('bg', 'Следующий') ?>
                         <i class="glyphicon glyphicon-chevron-right"></i>
                     </button>
                 </div>
@@ -38,7 +41,7 @@
 </div>
 
 <?php
-$items = array_map(function($model) {
+$items = array_map(function($model) use ($widget) {
     return [
         'title' => $model->hasAttribute($widget->titleAttribute) ? $model->{$widget->titleAttribute} : '',
         'link' => $model->hasAttribute($widget->linkAttribute) ? $model->{$widget->linkAttribute} : '',
@@ -47,16 +50,16 @@ $items = array_map(function($model) {
 }, $models);
 
 switch ($widget->type) {
-    case Galery::TYPE_PHOTO:
-        echo $this->render($widget->itemsViewPath . DIRECTORY_SEPARATOR . $widget->photoView, ['items' => $items]);
+    case Gallery::TYPE_PHOTO:
+        echo $this->render($widget->photoView, ['items' => $items]);
         break;
-    case Galery::TYPE_VIDEO:
-        echo $this->render($widget->itemsViewPath . DIRECTORY_SEPARATOR . $widget->videoView, ['items' => $items]);
+    case Gallery::TYPE_VIDEO:
+        echo $this->render($widget->videoView, ['items' => $items]);
         break;
-    case Galery::TYPE_AUDIO:
-        echo $this->render($widget->itemsViewPath . DIRECTORY_SEPARATOR . $widget->audioView, ['items' => $items]);
+    case Gallery::TYPE_AUDIO:
+        echo $this->render($widget->audioView, ['items' => $items]);
         break;
     default:
-        throw new \RuntimeException(Yii::t('bg', "Указан несуществующий тип галереи: '$galeryType'"));
+        throw new \RuntimeException(Yii::t('bg', "Указан несуществующий тип галереи: '$galleryType'"));
         break;
 }

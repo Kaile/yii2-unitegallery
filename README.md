@@ -1,6 +1,6 @@
-Bootstrap Galery
+Bootstrap Gallery
 ================
-Yii2 extension bootstrap galery for photos, videos and audio traks
+Yii2 extension bootstrap gallery for photos, videos and audio traks
 
 Installation
 ------------
@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist kaile/yii2-bootstrap-galery "*"
+php composer.phar require --prefer-dist kaile/yii2-bootstrap-gallery "*"
 ```
 
 or add
 
 ```
-"kaile/yii2-bootstrap-galery": "*"
+"kaile/yii2-bootstrap-gallery": "*"
 ```
 
 to the require section of your `composer.json` file.
@@ -28,4 +28,4 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \kaile\BootstrapGalery\AutoloadExample::widget(); ?>```
+<?= \kaile\BootstrapGallery\AutoloadExample::widget(); ?>```
