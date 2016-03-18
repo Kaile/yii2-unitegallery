@@ -5,47 +5,12 @@
     /* @var $this View */
 ?>
 
-<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
-<div id="blueimp-gallery" class="blueimp-gallery">
-    <!-- The container for the modal slides -->
-    <div class="slides"></div>
-    <!-- Controls for the borderless lightbox -->
-    <h3 class="title"></h3>
-    <a class="prev">вЂ№</a>
-    <a class="next">вЂє</a>
-    <a class="close">Г—</a>
-    <a class="play-pause"></a>
-    <ol class="indicator"></ol>
-    <!-- The modal dialog, which will be used to wrap the lightbox content -->
-    <div class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title"></h4>
-                </div>
-                <div class="modal-body next"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left prev">
-                        <i class="glyphicon glyphicon-chevron-left"></i>
-                        <?= Yii::t('bg', 'РџСЂРµРґС‹РґСѓС‰РёР№') ?>
-                    </button>
-                    <button type="button" class="btn btn-primary next">
-                        <?= Yii::t('bg', 'РЎР»РµРґСѓСЋС‰РёР№') ?>
-                        <i class="glyphicon glyphicon-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <?php
-$items = array_map(function($model) use ($widget) {
-    return [
-        'title' => $model->hasAttribute($widget->titleAttribute) ? $model->{$widget->titleAttribute} : '',
-        'link' => $model->hasAttribute($widget->linkAttribute) ? $model->{$widget->linkAttribute} : '',
-        'description' => $model->hasAttribute($widget->descriptionAttribute) ? $model->{$widget->descriptionAttribute} : '',
+$items = array_map(function($item) use ($widget) {
+    return (object) [
+        'title' => $item->hasAttribute($widget->titleAttribute) ? $item->{$widget->titleAttribute} : '',
+        'link' => $item->hasAttribute($widget->linkAttribute) ? $item->{$widget->linkAttribute} : '',
+        'description' => $item->hasAttribute($widget->descriptionAttribute) ? $item->{$widget->descriptionAttribute} : '',
     ];
 }, $models);
 
@@ -60,6 +25,5 @@ switch ($widget->type) {
         echo $this->render($widget->audioView, ['items' => $items]);
         break;
     default:
-        throw new \RuntimeException(Yii::t('bg', "РЈРєР°Р·Р°РЅ РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ С‚РёРї РіР°Р»РµСЂРµРё: '$galleryType'"));
-        break;
+        throw new \RuntimeException(Yii::t('bg', "Указан несуществующий тип галереи: '$galleryType'"));
 }

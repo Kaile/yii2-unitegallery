@@ -2,17 +2,26 @@
 
 use yii\web\View;
 use kaile\BootstrapGallery\assets\GalleryAsset;
+use yii\base\Widget;
 
 /* @var $this View */
 /* @var $items array */
 GalleryAsset::register($this);
+
+$blockId = 'links-' . Widget::$autoIdPrefix . ++Widget::$counter;
 ?>
 
-<div id="links" class="bg-photo-items row">
+<div id="<?= $blockId ?>" class="bg-photo-items center-block links">
         <?php foreach ($items as $item): ?>
-            <?php $item = (object) $item ?>
-            <a href="<?= $item->link ?>" title="<?= $item->title ?>" data-gallery>
-                <img src="<?= $item->link ?>" alt="<?= $item->title ?>" class="col-xs-2" />
-            </a>
+            <img 
+                src="<?= $item->link ?>" 
+                alt="<?= $item->title ?>" 
+                data-type="image"
+                data-image="<?= $item->link ?>"
+                data-description="<?= $item->description ?>"
+            />
         <?php endforeach ?>
 </div>
+
+<?php
+$this->registerJs("$('#{$blockId}').unitegallery({slider_scale_mode: 'fit'});", View::POS_END);

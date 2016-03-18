@@ -24,6 +24,13 @@ class Gallery extends Widget
     const TYPE_AUDIO = 'audio';
 
     /**
+     * Indicates that galery controls are present
+     *
+     * @var boolean
+     */
+    public static $enabled = false;
+
+    /**
      * Type of gallery widget
      *
      * @var string
@@ -106,7 +113,7 @@ class Gallery extends Widget
     public function init()
     {
         if ( ! $this->query instanceof ActiveQuery ) {
-            throw new \RuntimeException(Yii::t('bg', 'ÐÐµÐ²ÐµÑ€Ð½Ð¾ Ð·Ð°Ð´Ð°Ð½ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€ [[query]] Ð¾Ð½ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð¼ ÐºÐ»Ð°ÑÑÐ° [[ActiveQuery]] Ð¸Ð»Ð¸ ÐµÐ³Ð¾ Ð¿Ð¾Ñ‚Ð¾Ð¼ÐºÐ°.'));
+            throw new \RuntimeException(Yii::t('bg', 'Íåâåðíî çàäàí ïàðàìåòð [[query]] îí äîëæåí áûòü îáúåêòîì êëàññà [[ActiveQuery]] èëè åãî ïîòîìêà.'));
         }
         if (empty($this->type)) {
             $this->type = self::TYPE_PHOTO;
@@ -146,5 +153,21 @@ class Gallery extends Widget
             'models' => $models,
             'widget' => $this,
         ]);
+    }
+    
+    /**
+     * Get youtube video identifier if exists.
+     * 
+     * @return string|boolean if is youtube video link then return it identifier,
+     * else return false
+     */
+    public static function getYoutubeId($link)
+    {
+        $matches = [];
+        if (preg_match('/(youtube\.com\/watch\?v=(.*))|(youtu\.be\/(.*))/', $link, $matches)) {
+            return empty($matches[1]) ? $matches[4] : $matches[2];
+        } else {
+            return false;
+        }
     }
 }
