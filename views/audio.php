@@ -2,7 +2,7 @@
 
 use yii\web\View;
 use yii\base\Widget;
-use kaile\BootstrapGallery\assets\GalleryAsset;
+use kaile\unitegallery\assets\GalleryAsset;
 
 /* @var $this View */
 /* @var $items array */

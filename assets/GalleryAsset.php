@@ -1,6 +1,6 @@
 <?php
 
-namespace kaile\BootstrapGallery\assets;
+namespace kaile\unitegallery\assets;
 
 use yii\web\AssetBundle;
 
