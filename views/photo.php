@@ -1,7 +1,7 @@
 <?php
 
 use yii\web\View;
-use kaile\BootstrapGallery\assets\GalleryAsset;
+use kaile\unitegallery\assets\GalleryAsset;
 use yii\base\Widget;
 
 /* @var $this View */

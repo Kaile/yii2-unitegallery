@@ -1,6 +1,6 @@
 <?php
     use yii\web\View;
-    use kaile\BootstrapGallery\Gallery;
+    use kaile\unitegallery\Gallery;
 
     /* @var $this View */
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-namespace kaile\BootstrapGallery;
+namespace kaile\unitegallery;
 
 use Yii;
 use yii\base\Widget;
