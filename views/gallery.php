@@ -1,8 +1,15 @@
 <?php
-    use yii\web\View;
-    use kaile\unitegallery\Gallery;
+
+use kaile\unitegallery\assets\GalleryAsset;
+use kaile\unitegallery\Gallery;
+use yii\web\View;
 
     /* @var $this View */
+    /* @var $widget Gallery */
+    
+    if ( ! $widget->withoutAssets ) {
+        GalleryAsset::register($this);
+    }
 ?>
 
 <?php
@@ -25,5 +32,5 @@ switch ($widget->type) {
         echo $this->render($widget->audioView, ['items' => $items]);
         break;
     default:
-        throw new \RuntimeException(Yii::t('bg', "Указан несуществующий тип галереи: '$galleryType'"));
+        throw new RuntimeException(Yii::t('bg', "вЂќРєР°Р·Р°РЅ РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ С‚РёРї РіР°Р»РµСЂРµРё: '$galleryType'"));
 }

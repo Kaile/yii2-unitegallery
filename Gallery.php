@@ -106,6 +106,8 @@ class Gallery extends Widget
      * @var string
      */
     public $audioView = 'audio';
+    
+    public $withoutAssets = false;
 
     /**
      * @inheritdoc
@@ -113,7 +115,7 @@ class Gallery extends Widget
     public function init()
     {
         if ( ! $this->query instanceof ActiveQuery ) {
-            throw new \RuntimeException(Yii::t('bg', 'Íåâåðíî çàäàí ïàðàìåòð [[query]] îí äîëæåí áûòü îáúåêòîì êëàññà [[ActiveQuery]] èëè åãî ïîòîìêà.'));
+            throw new \RuntimeException(Yii::t('bg', 'ÐÐµÐ²ÐµÑ€Ð½Ð¾ Ð·Ð°Ð´Ð°Ð½ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€ [[query]] Ð¾Ð½ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð¼ ÐºÐ»Ð°ÑÑÐ° [[ActiveQuery]] Ð¸Ð»Ð¸ ÐµÐ³Ð¾ Ð¿Ð¾Ñ‚Ð¾Ð¼ÐºÐ°.'));
         }
         if (empty($this->type)) {
             $this->type = self::TYPE_PHOTO;
