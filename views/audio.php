@@ -1,12 +1,10 @@
 <?php
 
-use yii\web\View;
 use yii\base\Widget;
-use kaile\unitegallery\assets\GalleryAsset;
+use yii\web\View;
 
 /* @var $this View */
 /* @var $items array */
-GalleryAsset::register($this);
 
 $blockId = 'links-' . Widget::$autoIdPrefix . ++Widget::$counter;
 ?>

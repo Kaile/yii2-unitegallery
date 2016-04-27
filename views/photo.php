@@ -1,12 +1,10 @@
 <?php
 
-use yii\web\View;
-use kaile\unitegallery\assets\GalleryAsset;
 use yii\base\Widget;
+use yii\web\View;
 
 /* @var $this View */
 /* @var $items array */
-GalleryAsset::register($this);
 
 $blockId = 'links-' . Widget::$autoIdPrefix . ++Widget::$counter;
 ?>
@@ -24,4 +22,4 @@ $blockId = 'links-' . Widget::$autoIdPrefix . ++Widget::$counter;
 </div>
 
 <?php
-$this->registerJs("$('#{$blockId}').unitegallery({slider_scale_mode: 'fit'});", View::POS_END);
+$this->registerJs("$('#{$blockId}').unitegallery({slider_scale_mode: 'fit', slider_zoom_mousewheel: false});", View::POS_END);
