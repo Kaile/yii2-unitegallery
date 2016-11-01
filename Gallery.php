@@ -109,6 +109,13 @@ class Gallery extends Widget
     public $audioView = 'audio';
     
     /**
+     * Do not register asset bundle
+     * 
+     * @var bool
+     */
+    public $withoutAssets = false;
+    
+    /**
      * Font size for description in textpanel of photo gallery
      * 
      * @var int

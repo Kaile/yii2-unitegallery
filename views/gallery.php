@@ -21,16 +21,21 @@ $items = array_map(function($item) use ($widget) {
     ];
 }, $models);
 
+$viewParams = [
+    'items' => $items,
+    'textpanelDescFontSize' => $widget->textpanelDescFontSize,
+];
+
 switch ($widget->type) {
     case Gallery::TYPE_PHOTO:
-        echo $this->render($widget->photoView, ['items' => $items]);
+        echo $this->render($widget->photoView, $viewParams);
         break;
     case Gallery::TYPE_VIDEO:
-        echo $this->render($widget->videoView, ['items' => $items]);
+        echo $this->render($widget->videoView, $viewParams);
         break;
     case Gallery::TYPE_AUDIO:
-        echo $this->render($widget->audioView, ['items' => $items]);
+        echo $this->render($widget->audioView, $viewParams);
         break;
     default:
-        throw new RuntimeException(Yii::t('bg', "”казан несуществующий тип галереи: '$galleryType'"));
+        throw new RuntimeException(Yii::t('bg', "Указан несуществующий тип галереи: '$galleryType'"));
 }
