@@ -5,6 +5,7 @@ namespace kaile\unitegallery;
 use Yii;
 use yii\base\Widget;
 use yii\db\ActiveQuery;
+use RuntimeException;
 
 /**
  * Description of Gallery
@@ -107,7 +108,12 @@ class Gallery extends Widget
      */
     public $audioView = 'audio';
     
-    public $withoutAssets = false;
+    /**
+     * Font size for description in textpanel of photo gallery
+     * 
+     * @var int
+     */
+    public $textpanelDescFontSize = 12;
 
     /**
      * @inheritdoc
@@ -115,7 +121,7 @@ class Gallery extends Widget
     public function init()
     {
         if ( ! $this->query instanceof ActiveQuery ) {
-            throw new \RuntimeException(Yii::t('bg', 'Неверно задан параметр [[query]] он должен быть объектом класса [[ActiveQuery]] или его потомка.'));
+            throw new RuntimeException(Yii::t('bg', 'Неверно задан параметр [[query]] он должен быть объектом класса [[ActiveQuery]] или его потомка.'));
         }
         if (empty($this->type)) {
             $this->type = self::TYPE_PHOTO;
@@ -154,6 +160,7 @@ class Gallery extends Widget
         echo $this->render($this->mainView, [
             'models' => $models,
             'widget' => $this,
+            'textpanelDescFontSize' => $this->textpanelDescFontSize,
         ]);
     }
     

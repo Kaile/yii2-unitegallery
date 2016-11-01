@@ -5,6 +5,7 @@ use yii\web\View;
 
 /* @var $this View */
 /* @var $items array */
+/* @var $textpanelDescFontSize int */
 
 $blockId = 'links-' . Widget::$autoIdPrefix . ++Widget::$counter;
 ?>
@@ -22,4 +23,4 @@ $blockId = 'links-' . Widget::$autoIdPrefix . ++Widget::$counter;
 </div>
 
 <?php
-$this->registerJs("$('#{$blockId}').unitegallery({slider_scale_mode: 'fit', slider_zoom_mousewheel: false});", View::POS_END);
+$this->registerJs("$('#{$blockId}').unitegallery({slider_scale_mode: 'fit', slider_zoom_mousewheel: false, textpanel_desc_font_size: $textpanelDescFontSize});", View::POS_END);
