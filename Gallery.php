@@ -193,6 +193,46 @@ class Gallery extends Widget
             'textpanelDescFontSize' => $this->textpanelDescFontSize,
         ]);
     }
+
+    public static function getVideoId($link, $videoType)
+    {
+        $result = null;
+
+        switch ($videoType) {
+            case static::VIDEO_TYPE_VIMEO:
+                $result = static::getVimeoId($link);
+                break;
+            case static::VIDEO_TYPE_WISTIA:
+                $result = static::getWistiaId($link);
+                break;
+            case static::VIDEO_TYPE_YOUTUBE:
+                $result = static::getYoutubeId($link);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Get vimeo video identifier if exists.
+     * 
+     * @return string|boolean if is vimeo video link then return it identifier,
+     * else return false
+     */
+    public static function getVimeoId($link)
+    {
+        throw new RuntimeException('Vimeo video link generation is not implemented');
+    }
+
+    /**
+     * Get wistia video identifier if exists.
+     * 
+     * @return string|boolean if is wistia video link then return it identifier,
+     * else return false
+     */
+    public static function getWistiaId($link)
+    {
+        throw new RuntimeException('Wistia video link generation is not implemented');
+    }
     
     /**
      * Get youtube video identifier if exists.

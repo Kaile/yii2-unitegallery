@@ -15,9 +15,11 @@ $blockId = 'links-' . Widget::$autoIdPrefix . ++Widget::$counter;
         <?php foreach ($items as $item): ?>
             <img
                 alt="<?= $item->title ?>"
-                data-type="youtube"
-                data-videoid="<?= Gallery::getYoutubeId($item->link) ?>"
+                data-type="<?= $item->videoType ?>"
                 data-description="<?= $item->description ?>"
+                <?= $item->videoType !== Gallery::VIDEO_TYPE_HTML5 ? 'data-videoid="' . Gallery::getVideoId($item->link, $item->videoType) . '"' : '' ?>
+                <?= $item->videoType === Gallery::VIDEO_TYPE_HTML5 ? "data-image=\"{$item->cover}\"" : '' ?>
+                <?= $item->videoType === Gallery::VIDEO_TYPE_VIMEO ? "data-thumb=\"{$item->cover}\"" : '' ?>
             />
         <?php endforeach ?>
 </div>

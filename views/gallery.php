@@ -4,8 +4,10 @@ use kaile\unitegallery\assets\GalleryAsset;
 use kaile\unitegallery\Gallery;
 use yii\web\View;
 
-    /* @var $this View */
-    /* @var $widget Gallery */
+    /** 
+     * @var View $this
+     * @var Gallery $widget
+     */
     
     if ( ! $widget->withoutAssets ) {
         GalleryAsset::register($this);
@@ -18,6 +20,8 @@ $items = array_map(function($item) use ($widget) {
         'title' => $item->hasAttribute($widget->titleAttribute) ? $item->{$widget->titleAttribute} : '',
         'link' => $item->hasAttribute($widget->linkAttribute) ? $item->{$widget->linkAttribute} : '',
         'description' => $item->hasAttribute($widget->descriptionAttribute) ? $item->{$widget->descriptionAttribute} : '',
+        'videoType' => $item->hasAttribute($widget->videoTypeAttribute) ? $item->{$widget->videoTypeAttribute} : '',
+        'cover' => $item->hasAttribute($widget->coverAttribute) ? $item->{$widget->coverAttribute} : '',
     ];
 }, $models);
 
