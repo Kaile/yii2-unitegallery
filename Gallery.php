@@ -25,6 +25,14 @@ class Gallery extends Widget
     const TYPE_AUDIO = 'audio';
 
     /**
+     * Constants for slides types
+     */
+    const VIDEO_TYPE_YOUTUBE = 'youtube';
+    const VIDEO_TYPE_VIMEO = 'vimeo';
+    const VIDEO_TYPE_HTML5 = 'html5video';
+    const VIDEO_TYPE_WISTIA = 'wistia';
+
+    /**
      * Indicates that galery controls are present
      *
      * @var boolean
@@ -61,9 +69,24 @@ class Gallery extends Widget
 
     /**
      * Model attribute that contains data for descriptions of gallery items
+     * 
      * @var string
      */
     public $descriptionAttribute = 'description';
+
+    /**
+     * Type attribute of slides
+     *
+     * @var string
+     */
+    public $videoTypeAttribute = 'type';
+
+    /**
+     * Cover attribute for img preview (for video e.g.)
+     *
+     * @var string
+     */
+    public $coverAttribute = 'cover';
 
     /**
      * Full path for main view directory. Default sets to __DIR__ . '/views'.
