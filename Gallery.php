@@ -25,6 +25,14 @@ class Gallery extends Widget
     const TYPE_AUDIO = 'audio';
 
     /**
+     * Constants for slides types
+     */
+    const VIDEO_TYPE_YOUTUBE = 'youtube';
+    const VIDEO_TYPE_VIMEO = 'vimeo';
+    const VIDEO_TYPE_HTML5 = 'html5video';
+    const VIDEO_TYPE_WISTIA = 'wistia';
+
+    /**
      * Indicates that galery controls are present
      *
      * @var boolean
@@ -61,9 +69,24 @@ class Gallery extends Widget
 
     /**
      * Model attribute that contains data for descriptions of gallery items
+     * 
      * @var string
      */
     public $descriptionAttribute = 'description';
+
+    /**
+     * Type attribute of slides
+     *
+     * @var string
+     */
+    public $videoTypeAttribute = 'type';
+
+    /**
+     * Cover attribute for img preview (for video e.g.)
+     *
+     * @var string
+     */
+    public $coverAttribute = 'cover';
 
     /**
      * Full path for main view directory. Default sets to __DIR__ . '/views'.
@@ -169,6 +192,46 @@ class Gallery extends Widget
             'widget' => $this,
             'textpanelDescFontSize' => $this->textpanelDescFontSize,
         ]);
+    }
+
+    public static function getVideoId($link, $videoType)
+    {
+        $result = null;
+
+        switch ($videoType) {
+            case static::VIDEO_TYPE_VIMEO:
+                $result = static::getVimeoId($link);
+                break;
+            case static::VIDEO_TYPE_WISTIA:
+                $result = static::getWistiaId($link);
+                break;
+            case static::VIDEO_TYPE_YOUTUBE:
+                $result = static::getYoutubeId($link);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Get vimeo video identifier if exists.
+     * 
+     * @return string|boolean if is vimeo video link then return it identifier,
+     * else return false
+     */
+    public static function getVimeoId($link)
+    {
+        throw new RuntimeException('Vimeo video link generation is not implemented');
+    }
+
+    /**
+     * Get wistia video identifier if exists.
+     * 
+     * @return string|boolean if is wistia video link then return it identifier,
+     * else return false
+     */
+    public static function getWistiaId($link)
+    {
+        throw new RuntimeException('Wistia video link generation is not implemented');
     }
     
     /**
