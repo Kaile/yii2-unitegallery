@@ -47,11 +47,14 @@ img.gallery-photo-thumbnail {
 
 .ug-slide-wrapper > .ug-item-wrapper {
     display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .ug-slider-wrapper > .ug-slider-inner > .ug-slide-wrapper > .ug-item-wrapper > img,
 .ug-thumbs-strip-inner > .ug-thumb-wrapper > img.ug-thumb-image {
     margin: 0 !important;
     transform: translate(0) !important;
-    width: 100% !important;
+    left: 0 !important;
+    position: relative !important;
 }
