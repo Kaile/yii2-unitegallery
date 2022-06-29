@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e45e0e2b328f4fad39a8dcbfccaa2e57",
+    "content-hash": "87f98d8606fca56d0d450848889d6518",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -59,6 +59,27 @@
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
             },
             "type": "bower-asset"
+        },
+        {
+            "name": "bower-asset/unitegallery",
+            "version": "1.7.40",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:vvvmax/unitegallery.git",
+                "reference": "0d707700e24d219194d7e086db76551edc035624"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vvvmax/unitegallery/zipball/0d707700e24d219194d7e086db76551edc035624",
+                "reference": "0d707700e24d219194d7e086db76551edc035624"
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.9.0"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "bower-asset/yii2-pjax",
