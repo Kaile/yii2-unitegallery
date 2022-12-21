@@ -16,14 +16,23 @@ use yii\web\View;
 
 <?php
 $items = array_map(function($item) use ($widget) {
+
+    $description = $item->hasAttribute($widget->descriptionAttribute) ? $item->{$widget->descriptionAttribute} : '';
+    $author = $item->hasAttribute($widget->copyrightAuthorField) ? $item->{$widget->copyrightAuthorField} : '';
+    $source = $item->hasAttribute($widget->copyrightSourceField) ? $item->{$widget->copyrightSourceField} : '';
+    $copyrightDescription = trim($description, ' .')
+        . ($author ? Yii::t('bg', '. Автор: {author}', ['author' => $author]) : '')
+        . ($source ? Yii::t('bg', '. Источник: {source}', ['source' => $source]) : '');
+
     return (object) [
         'title' => $item->hasAttribute($widget->titleAttribute) ? $item->{$widget->titleAttribute} : '',
         'link' => $item->hasAttribute($widget->linkAttribute) ? $item->{$widget->linkAttribute} : '',
-        'description' => $item->hasAttribute($widget->descriptionAttribute) ? $item->{$widget->descriptionAttribute} : '',
         'videoType' => $item->hasAttribute($widget->videoTypeAttribute) ? $item->{$widget->videoTypeAttribute} : '',
         'cover' => $item->hasAttribute($widget->coverAttribute) ? $item->{$widget->coverAttribute} : '',
-        'author' => $item->hasAttribute($widget->copyrightAuthorField) ? $item->{$widget->copyrightAuthorField} : '',
-        'source' => $item->hasAttribute($widget->copyrightSourceField) ? $item->{$widget->copyrightSourceField} : '',
+        'description' => $description,
+        'author' => $author,
+        'source' => $source,
+        'copyrightDescription' => $copyrightDescription,
     ];
 }, $models);
 

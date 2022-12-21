@@ -16,7 +16,7 @@ $blockId = 'links-' . Widget::$autoIdPrefix . ++Widget::$counter;
             <img
                 alt="<?= $item->title ?>"
                 data-type="<?= $item->videoType ?>"
-                data-description="<?= $item->description ?>"
+                data-description="<?= $item->copyrightDescription ?>"
                 <?= $item->videoType !== Gallery::VIDEO_TYPE_HTML5 ? 'data-videoid="' . Gallery::getVideoId($item->link, $item->videoType) . '"' : '' ?>
                 <?= $item->videoType === Gallery::VIDEO_TYPE_HTML5 ? "data-image=\"{$item->cover}\"" : '' ?>
                 <?= $item->videoType === Gallery::VIDEO_TYPE_HTML5 ? "data-videomp4=\"{$item->link}\"" : '' ?>
