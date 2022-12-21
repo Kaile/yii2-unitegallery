@@ -22,6 +22,8 @@ $items = array_map(function($item) use ($widget) {
         'description' => $item->hasAttribute($widget->descriptionAttribute) ? $item->{$widget->descriptionAttribute} : '',
         'videoType' => $item->hasAttribute($widget->videoTypeAttribute) ? $item->{$widget->videoTypeAttribute} : '',
         'cover' => $item->hasAttribute($widget->coverAttribute) ? $item->{$widget->coverAttribute} : '',
+        'author' => $item->hasAttribute($widget->copyrightAuthorField) ? $item->{$widget->copyrightAuthorField} : '',
+        'source' => $item->hasAttribute($widget->copyrightSourceField) ? $item->{$widget->copyrightSourceField} : '',
     ];
 }, $models);
 

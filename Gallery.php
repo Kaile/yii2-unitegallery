@@ -146,6 +146,20 @@ class Gallery extends Widget
     public $textpanelDescFontSize = 12;
 
     /**
+     * Field that contains author info
+     *
+     * @var string
+     */
+    public $copyrightAuthorField = 'author';
+
+    /**
+     * Field that contains source info
+     *
+     * @var string
+     */
+    public $copyrightSourceField = 'source';
+
+    /**
      * @inheritdoc
      */
     public function init()
