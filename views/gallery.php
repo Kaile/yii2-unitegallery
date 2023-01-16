@@ -16,14 +16,13 @@ use yii\web\View;
 
 <?php
 $items = array_map(function($item) use ($widget) {
-
     $description = $item->hasAttribute($widget->descriptionAttribute) ? $item->{$widget->descriptionAttribute} : '';
     $author = $item->hasAttribute($widget->copyrightAuthorField) ? $item->{$widget->copyrightAuthorField} : '';
     $source = $item->hasAttribute($widget->copyrightSourceField) ? $item->{$widget->copyrightSourceField} : '';
-    $copyrightDescription = $description ? trim($description, ' .') . '. ' : ''
-        . ($author ? Yii::t('bg', 'Автор: {author}', ['author' => $author]) : '')
-        .( $author ? '.' : '') . ($source ? Yii::t('bg', '. Источник: {source}', ['source' => $source]) : '');
-
+    $copyrightDescription = ($description ? trim($description, ' .') . '. ' : '')
+        . ($author ? Yii::t('bg', 'Автор: {author}', ['author' => trim($author, '.')]) : '')
+        .( $author ? '.' : '') . ($source ? Yii::t('bg', '. Источник: {source}', ['source' => trim($source, '.') . '.']) : '');
+ 
     return (object) [
         'title' => $item->hasAttribute($widget->titleAttribute) ? $item->{$widget->titleAttribute} : '',
         'link' => $item->hasAttribute($widget->linkAttribute) ? $item->{$widget->linkAttribute} : '',
