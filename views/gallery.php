@@ -21,7 +21,7 @@ $items = array_map(function($item) use ($widget) {
     $source = $item->hasAttribute($widget->copyrightSourceField) ? $item->{$widget->copyrightSourceField} : '';
     $copyrightDescription = ($description ? trim($description, ' .') . '. ' : '')
         . ($author ? Yii::t('bg', 'Автор: {author}', ['author' => trim($author, '.')]) : '')
-        .( $author ? '.' : '') . ($source ? Yii::t('bg', '. Источник: {source}', ['source' => trim($source, '.') . '.']) : '');
+        .( $author ? '.' : '') . ($source ? Yii::t('bg', ' Источник: {source}', ['source' => trim($source, '.') . '.']) : '');
  
     return (object) [
         'title' => $item->hasAttribute($widget->titleAttribute) ? $item->{$widget->titleAttribute} : '',
